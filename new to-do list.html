@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HabitForge — Indian Time Habit Tracker</title>
+<style>
+:root{--bg:#070b16;--card:#101827cc;--card2:#141e31;--text:#f7fbff;--muted:#93a1bb;--line:#26344f;--blue:#25a7ff;--cyan:#21e6c1;--orange:#ff9c3a;--red:#ff5f70;--shadow:0 24px 70px rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 0%,#153e67 0,transparent 29%),radial-gradient(circle at 88% 9%,#6a3314 0,transparent 25%),linear-gradient(180deg,#070b16,#0b1020 55%,#070b16);min-height:100vh}.wrap{max-width:1380px;margin:auto;padding:22px 18px 46px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:18px}.brand{display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;border-radius:16px;object-fit:cover;box-shadow:0 10px 30px rgba(37,167,255,.18)}.brand h1{font-size:30px;margin:0;letter-spacing:-1px}.brand p{margin:4px 0 0;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:rgba(255,255,255,.045);color:var(--text);padding:10px 13px;border-radius:12px;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.085)}.btn.primary{border:0;background:linear-gradient(135deg,var(--blue),#6a78ff)}.btn.warn{border-color:#7a4d24;background:rgba(255,156,58,.08)}.card{background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.085);backdrop-filter:blur(14px);border-radius:22px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:16px}.quote{padding:28px;position:relative;overflow:hidden}.quote:before{content:'“';position:absolute;right:12px;top:-28px;font:190px/1 Georgia,serif;color:rgba(37,167,255,.10)}.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--cyan)}.quote h2{max-width:780px;font-size:26px;line-height:1.3;margin:13px 0 9px}.quote p{margin:0;color:var(--muted)}.clock{padding:23px}.clock-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.clock h3{margin:0}.ist{color:var(--muted);font-size:13px}.clock-time{font-size:42px;font-weight:950;letter-spacing:-2px;margin:10px 0 0;background:linear-gradient(90deg,#fff,#86d8ff);-webkit-background-clip:text;background-clip:text;color:transparent}.clock-date{color:#c5d0e4;font-size:14px;margin-top:2px}.live{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:#afffe9;font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.goal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:11px;margin-top:16px}.goal{padding:15px}.goal .n{color:var(--muted);font-size:11px}.goal h4{font-size:14px;margin:7px 0 10px;line-height:1.25}.goal .track{height:8px;border-radius:99px;background:#202b40;overflow:hidden}.goal .fill{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.3s}.goal button{margin-top:9px;width:100%;font-size:12px;padding:8px;border-radius:10px}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:19px 0 12px}.monthnav{display:flex;gap:8px;align-items:center}.monthtitle{min-width:180px;text-align:center;font-weight:900}.subtle{color:var(--muted);font-size:13px}.main{padding:17px;overflow:hidden}.table-wrap{overflow:auto;border-radius:16px}.tracker{border-collapse:separate;border-spacing:0;width:100%;min-width:1000px}.tracker th,.tracker td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}.tracker th{background:#10192c;position:sticky;top:0;z-index:2;padding:9px 7px;color:#b6c3db;font-size:11px}.tracker th:first-child,.tracker td:first-child{position:sticky;left:0;z-index:3}.tracker th:first-child{z-index:4}.tracker th:first-child,.tracker td:first-child{text-align:left;min-width:270px}.tracker td:first-child{background:#101a2d}.tracker td{padding:8px 6px;background:rgba(255,255,255,.014)}.daynum{font-weight:900}.dow{font-size:9px;color:#6f7c98;margin-top:2px}.today-col{background:rgba(33,230,193,.06)!important;box-shadow:inset 0 2px 0 rgba(33,230,193,.7)}.habit-name{display:flex;align-items:center;gap:10px}.habit-icon{width:33px;height:33px;border-radius:10px;background:linear-gradient(135deg,rgba(37,167,255,.18),rgba(255,156,58,.12));display:grid;place-items:center}.habit-text{font-weight:800}.habit-sub{color:#71809a;font-size:10px;margin-top:2px}.cell{width:34px;height:34px;border-radius:10px;border:1px solid #2a3853;background:#151f34;color:#7f8ba5;cursor:pointer;font-weight:950;transition:.13s}.cell:hover{transform:scale(1.06);border-color:#5e7398}.cell.done{background:linear-gradient(135deg,var(--cyan),#15b892);color:#07151a;border-color:transparent;box-shadow:0 4px 14px rgba(33,230,193,.18)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.stat{padding:16px}.label{color:var(--muted);font-size:12px}.value{font-size:26px;font-weight:950;margin-top:4px}.mini{height:8px;background:#202b40;border-radius:99px;overflow:hidden;margin-top:10px}.mini i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.3s}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.panel{padding:18px}.panel h3{margin:0 0 11px}.habit-list{display:grid;gap:10px;max-height:290px;overflow:auto;padding-right:4px}.habit-row{display:grid;grid-template-columns:1fr 90px;gap:10px;align-items:center}.habit-row span{font-size:13px}.bar{height:9px;border-radius:99px;background:#202b40;overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}.add{display:flex;gap:8px;margin-top:12px}.add input{flex:1;min-width:0;background:#0d1525;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 12px;outline:none}.add input:focus{border-color:var(--blue)}.tip{padding:13px;margin-top:12px;border:1px dashed #32425f;border-radius:14px;color:#acb9cf;line-height:1.5;font-size:12px}.footer{text-align:center;color:#66738e;font-size:12px;margin-top:22px}.toast{position:fixed;right:18px;bottom:18px;background:#111c2f;border:1px solid #30415f;padding:12px 15px;border-radius:12px;box-shadow:var(--shadow);display:none}.toast.show{display:block;animation:pop .2s ease}@keyframes pop{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+.exam{padding:20px;margin-top:16px;overflow:hidden;position:relative}.exam:after{content:'';position:absolute;inset:auto -100px -160px auto;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,156,58,.16),transparent 65%);pointer-events:none}.exam-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.exam h2{margin:5px 0 6px;font-size:24px}.exam p{margin:0;color:var(--muted);max-width:760px}.exam-count{font-weight:950;font-size:18px;padding:12px 14px;border-radius:14px;background:rgba(255,156,58,.08);border:1px solid #734823;white-space:nowrap}.exam-controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 12px}.exam-controls label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px}.exam-controls input,.exam-controls select{background:#0d1525;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;outline:none;min-width:160px}.subject-row{display:flex;gap:8px;flex-wrap:wrap}.subject{padding:8px 11px;border:1px solid #2f405d;border-radius:999px;background:#111b2e;color:#dce7f7;font-size:12px}.subject-add{max-width:520px}.exam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.exam-stat{padding:12px 13px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}.exam-stat span{display:block;color:var(--muted);font-size:11px}.exam-stat b{display:block;margin-top:5px;font-size:15px}.subject-add input{min-width:0}.danger-mini{color:#ffbdc5}.@media(max-width:1050px){.goal-grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.bottom{grid-template-columns:1fr}}@media(max-width:650px){.exam-head{flex-direction:column}.exam-grid{grid-template-columns:1fr 1fr}.exam-count{width:100%}.top{align-items:flex-start;flex-direction:column}.goal-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr}.monthtitle{min-width:140px}.clock-time{font-size:34px}.quote h2{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><img class="logo" src="../a_clean_high_resolution_stylized_logo_brand_icon.png" alt="HabitForge logo"><div><h1>HabitForge</h1><p>Track your real day. Build your future.</p></div></div>
+  <div class="actions"><button class="btn" id="quoteBtn">New motivation</button><button class="btn warn" id="resetBtn">Reset month</button></div>
+</header>
+<section class="hero">
+  <div class="card quote"><div class="eyebrow">Today's thought</div><h2 id="quoteText">You don't need a perfect day. You need a day you are proud of.</h2><p>Keep stacking small wins. Your dashboard is built around consistency, not perfection.</p></div>
+  <div class="card clock"><div class="clock-row"><div><h3>India Standard Time</h3><div class="ist">Asia/Kolkata · UTC+05:30</div></div><div class="live"><span class="dot"></span>LIVE</div></div><div class="clock-time" id="clock">--:--:--</div><div class="clock-date" id="dateLabel">Loading…</div></div>
+</section>
+<section class="goal-grid" id="goalGrid"></section>
+<section class="card exam" id="examSection">
+  <div class="exam-head">
+    <div><div class="eyebrow">EXAM ZONE</div><h2>Exam preparation</h2><p>Turn the exam into a plan: set the date, add subjects, and track your daily study.</p></div>
+    <div class="exam-count" id="examCountdown">Set your exam date</div>
+  </div>
+  <div class="exam-controls">
+    <label>Exam date <input type="date" id="examDate"></label>
+    <label>Daily study target <select id="studyTarget"><option value="30">30 min</option><option value="60" selected>1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option><option value="180">3 hours</option></select></label>
+    <button class="btn primary" id="saveExam">Save exam plan</button>
+  </div>
+  <div class="subject-row" id="subjectRow"></div>
+  <div class="add subject-add"><input id="subjectInput" maxlength="28" placeholder="Add a subject, e.g. Mathematics"><button class="btn" id="addSubject">Add subject</button></div>
+  <div class="exam-grid">
+    <div class="exam-stat"><span>Days left</span><b id="daysLeft">—</b></div>
+    <div class="exam-stat"><span>Study target</span><b id="targetLabel">1 hour/day</b></div>
+    <div class="exam-stat"><span>Study check-ins this month</span><b id="studyCheckins">0</b></div>
+    <div class="exam-stat"><span>Next action</span><b id="nextAction">Complete today's Daily study check-in.</b></div>
+  </div>
+</section>
+<div class="toolbar"><div class="monthnav"><button class="btn" id="prevMonth">←</button><div class="monthtitle" id="monthTitle"></div><button class="btn" id="nextMonth">→</button><button class="btn primary" id="todayBtn">Today</button></div><div class="subtle" id="selectedHint"></div></div>
+<section class="card main"><div class="table-wrap"><table class="tracker" id="tracker"></table></div></section>
+<section class="stats">
+<div class="card stat"><div class="label">Completed today</div><div class="value" id="todayStat">0/6</div><div class="mini"><i id="todayBar"></i></div></div>
+<div class="card stat"><div class="label">Current full-day streak</div><div class="value" id="streakStat">0 days</div><div class="mini"><i id="streakBar"></i></div></div>
+<div class="card stat"><div class="label">Month check-ins</div><div class="value" id="totalStat">0</div><div class="mini"><i id="totalBar"></i></div></div>
+<div class="card stat"><div class="label">Month completion</div><div class="value" id="avgStat">0%</div><div class="mini"><i id="avgBar"></i></div></div>
+</section>
+<section class="bottom">
+<div class="card panel"><h3>Goal performance</h3><div class="habit-list" id="goalPerformance"></div></div>
+<div class="card panel"><h3>Add a personal habit</h3><div class="subtle">Your six main goals stay exactly as provided; this lets you add smaller daily actions beneath them.</div><div class="add"><input id="habitInput" maxlength="36" placeholder="e.g. 30 min revision 📚"><button class="btn primary" id="addHabit">Add</button></div><div class="tip">Progress is stored in this browser using local storage. The calendar and “today” status use <b>India Standard Time</b>, so the day changes at midnight in India even when your device is in another timezone.</div></div>
+</section>
+<div class="footer">HabitForge • IST real-time tracking • Goals sourced from your personal list</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const GOALS=[
+ ['📚','Daily study.'],
+ ['💪','Good strength and stamina.'],
+ ['⚽','football training.'],
+ ['🏆','School football team selection.'],
+ ['🧑‍🏫','Good impression on teacher.'],
+ ['💻','learning coding and AI tech.']
+];
+const QUOTES=[
+ 'You don’t need a perfect day. You need a day you are proud of.',
+ 'Consistency is what turns goals into results.',
+ 'Do today’s work so tomorrow has something to build on.',
+ 'Small wins count. Stack enough of them and your life changes.',
+ 'Discipline means keeping the promise you made to yourself.',
+ 'Your next level is hidden inside the boring repetition.'
+];
+const KEY='habitforge_v4';
+const tz='Asia/Kolkata';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{habits:GOALS.map(g=>g[1]),checks:{},goalDone:{}};
+let view={y:null,m:null};
+function nowIST(){return new Date(new Intl.DateTimeFormat('en-US',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format().replace(',','T')+'Z');}
+// Safer ISO parts without relying on browser locale parsing.
+function partsIST(){const s=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date());const o={};s.forEach(x=>o[x.type]=x.value);return {y:+o.year,m:+o.month,d:+o.day,h:+o.hour,min:+o.minute,sec:+o.second};}
+function setInitialView(){const p=partsIST();view.y=p.y;view.m=p.m}
+function monthKey(){return `${view.y}-${String(view.m).padStart(2,'0')}`}
+function daysInMonth(y,m){return new Date(Date.UTC(y,m,0)).getUTCDate()}
+function weekday(y,m,d){return new Date(Date.UTC(y,m-1,d)).getUTCDay()}
+function keyFor(hi,day){return `${monthKey()}|${hi}|${day}`}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),1700)}
+function renderGoals(){const box=document.getElementById('goalGrid');box.innerHTML='';GOALS.forEach((g,i)=>{let done=0;for(let d=1;d<=daysInMonth(view.y,view.m);d++)if(state.checks[keyFor(i,d)])done++;const pct=Math.round(done/daysInMonth(view.y,view.m)*100);const el=document.createElement('div');el.className='card goal';el.innerHTML=`<div class="n">GOAL ${i+1}</div><h4>${g[0]} ${esc(g[1])}</h4><div class="track"><div class="fill" style="width:${pct}%"></div></div><button class="btn" data-goal="${i}">${pct}% this month</button>`;box.appendChild(el)});box.querySelectorAll('[data-goal]').forEach(b=>b.onclick=()=>toast('Main goals are tracked by daily check-ins in the calendar.'))}
+function render(){const days=daysInMonth(view.y,view.m);document.getElementById('monthTitle').textContent=new Intl.DateTimeFormat('en-IN',{month:'long',year:'numeric',timeZone:tz}).format(new Date(Date.UTC(view.y,view.m-1,1)));const p=partsIST();const isCurrentMonth=(view.y===p.y&&view.m===p.m);document.getElementById('selectedHint').textContent=isCurrentMonth?`Today is ${p.d} ${new Intl.DateTimeFormat('en-IN',{month:'short',timeZone:tz}).format(new Date())} in India.`:'Viewing a past/future month.';
+let h='<thead><tr><th>DAILY TARGETS</th>';for(let d=1;d<=days;d++){const isToday=isCurrentMonth&&d===p.d;h+=`<th class="${isToday?'today-col':''}"><div class="daynum">${d}</div><div class="dow">${['Su','Mo','Tu','We','Th','Fr','Sa'][weekday(view.y,view.m,d)]}</div></th>`}h+='</tr></thead><tbody>';
+state.habits.forEach((habit,hi)=>{const icon=['📚','💪','⚽','🏆','🧑‍🏫','💻'][hi]||'✅';h+=`<tr><td><div class="habit-name"><div class="habit-icon">${icon}</div><div><div class="habit-text">${esc(habit)}</div><div class="habit-sub">Check it when completed</div></div></div></td>`;for(let d=1;d<=days;d++){const done=!!state.checks[keyFor(hi,d)];const isToday=isCurrentMonth&&d===p.d;h+=`<td class="${isToday?'today-col':''}"><button class="cell ${done?'done':''}" data-hi="${hi}" data-day="${d}">${done?'✓':'·'}</button></td>`}h+='</tr>'});h+='</tbody>';document.getElementById('tracker').innerHTML=h;document.querySelectorAll('.cell').forEach(b=>b.onclick=()=>{const hi=+b.dataset.hi,d=+b.dataset.day;const k=keyFor(hi,d);state.checks[k]=!state.checks[k];save();render();renderExam()});renderStats();renderGoals();renderPerformance()}
+function renderStats(){const days=daysInMonth(view.y,view.m);const p=partsIST();const todayValid=view.y===p.y&&view.m===p.m;const td=todayValid?p.d:null;const todayDone=todayValid?state.habits.filter((_,i)=>state.checks[keyFor(i,td)]).length:0;const total=state.habits.reduce((sum,_,i)=>sum+Array.from({length:days},(_,x)=>state.checks[keyFor(i,x+1)]?1:0).reduce((a,b)=>a+b,0),0);const possible=state.habits.length*days;const pct=possible?Math.round(total/possible*100):0;let cur=0;if(todayValid){for(let d=td;d>=1;d--){const full=state.habits.every((_,i)=>state.checks[keyFor(i,d)]);if(!full)break;cur++}}
+document.getElementById('todayStat').textContent=`${todayDone}/${state.habits.length}`;document.getElementById('todayBar').style.width=(state.habits.length?todayDone/state.habits.length*100:0)+'%';document.getElementById('streakStat').textContent=`${cur} ${cur===1?'day':'days'}`;document.getElementById('streakBar').style.width=Math.min(cur/14*100,100)+'%';document.getElementById('totalStat').textContent=total;document.getElementById('totalBar').style.width=pct+'%';document.getElementById('avgStat').textContent=pct+'%';document.getElementById('avgBar').style.width=pct+'%'}
+function renderPerformance(){const days=daysInMonth(view.y,view.m),box=document.getElementById('goalPerformance');box.innerHTML='';state.habits.forEach((habit,i)=>{let done=0;for(let d=1;d<=days;d++)if(state.checks[keyFor(i,d)])done++;const pct=Math.round(done/days*100);const r=document.createElement('div');r.className='habit-row';r.innerHTML=`<span>${esc(habit)}</span><div class="bar"><i style="width:${pct}%"></i></div>`;box.appendChild(r)})}
+function esc(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function tick(){const p=partsIST();document.getElementById('clock').textContent=[p.h,p.min,p.sec].map(n=>String(n).padStart(2,'0')).join(':');document.getElementById('dateLabel').textContent=new Intl.DateTimeFormat('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:tz}).format(new Date());if(view.y!==p.y||view.m!==p.m){view.y=p.y;view.m=p.m;render();renderExam()}}
+const examKey='habitforge_exam_v1';
+let exam=JSON.parse(localStorage.getItem(examKey)||'null')||{date:'',target:60,subjects:['Mathematics','Science','English']};
+function saveExam(){localStorage.setItem(examKey,JSON.stringify(exam))}
+function renderExam(){
+  const dateInput=document.getElementById('examDate'); const target=document.getElementById('studyTarget');
+  dateInput.value=exam.date||''; target.value=String(exam.target||60); document.getElementById('targetLabel').textContent=(exam.target||60)>=60?((exam.target||60)/60+' hour/day').replace('.5','½'):(exam.target||60)+' min/day';
+  const row=document.getElementById('subjectRow'); row.innerHTML='';
+  exam.subjects.forEach((x,i)=>{const el=document.createElement('span');el.className='subject';el.textContent=x;el.title='Click to remove';el.style.cursor='pointer';el.onclick=()=>{exam.subjects.splice(i,1);saveExam();renderExam()};row.appendChild(el)});
+  const cd=document.getElementById('examCountdown'); const dl=document.getElementById('daysLeft');
+  if(exam.date){const [y,m,d]=exam.date.split('-').map(Number); const now=partsIST(); const a=Date.UTC(now.y,now.m-1,now.d); const b=Date.UTC(y,m-1,d); const diff=Math.ceil((b-a)/86400000); if(diff>0){cd.textContent=`${diff} day${diff===1?'':'s'} to go`;dl.textContent=String(diff)}else if(diff===0){cd.textContent='Exam day is today';dl.textContent='Today'}else{cd.textContent='Exam date passed';dl.textContent='Passed'}}else{cd.textContent='Set your exam date';dl.textContent='—'}
+  const studyIndex=state.habits.findIndex(h=>h==='Daily study.'); let sc=0; const dim=daysInMonth(view.y,view.m); if(studyIndex>=0)for(let d=1;d<=dim;d++)if(state.checks[keyFor(studyIndex,d)])sc++; document.getElementById('studyCheckins').textContent=sc;
+  const p=partsIST(); const todayDone=studyIndex>=0 && state.checks[keyFor(studyIndex,p.d)]; document.getElementById('nextAction').textContent=todayDone?'Daily study done today. Keep going.':'Complete today\'s Daily study check-in.';
+}
+setInitialView();render();renderExam();tick();setInterval(tick,1000);
+document.getElementById('prevMonth').onclick=()=>{view.m--;if(view.m===0){view.m=12;view.y--}render();renderExam()};document.getElementById('nextMonth').onclick=()=>{view.m++;if(view.m===13){view.m=1;view.y++}render();renderExam()};document.getElementById('todayBtn').onclick=()=>{const p=partsIST();view.y=p.y;view.m=p.m;render();renderExam()};document.getElementById('quoteBtn').onclick=()=>{document.getElementById('quoteText').textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)]};document.getElementById('resetBtn').onclick=()=>{if(confirm(`Reset all check-ins for ${document.getElementById('monthTitle').textContent}?`)){for(let k of Object.keys(state.checks))if(k.startsWith(monthKey()+'|'))delete state.checks[k];save();render();renderExam();toast('Month reset. Fresh start.')}};document.getElementById('addHabit').onclick=()=>{const i=document.getElementById('habitInput'),v=i.value.trim();if(!v)return;state.habits.push(v);save();i.value='';render();renderExam();toast('Habit added.')};document.getElementById('habitInput').onkeydown=e=>{if(e.key==='Enter')document.getElementById('addHabit').click()};document.getElementById('saveExam').onclick=()=>{exam.date=document.getElementById('examDate').value;exam.target=+document.getElementById('studyTarget').value;saveExam();renderExam();toast('Exam plan saved.')};document.getElementById('addSubject').onclick=()=>{const i=document.getElementById('subjectInput'),v=i.value.trim();if(!v)return;exam.subjects.push(v);saveExam();i.value='';renderExam();toast('Subject added.')};document.getElementById('subjectInput').onkeydown=e=>{if(e.key==='Enter')document.getElementById('addSubject').click()};
+</script>
+</body>
+</html>
